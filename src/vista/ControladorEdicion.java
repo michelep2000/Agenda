@@ -2,6 +2,7 @@ package vista;
 
 import controlador.Main;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -21,9 +22,9 @@ public class ControladorEdicion extends Main {
 	@FXML
 	private Button btnOk;
 
-	public void guardar() {
-		data.getPersonData().add(new Persona(txtNombre.getText(), txtApellido.getText(), txtTelefono.getText()));
-		cPrincipal.setPerson();
+	public void guardar(ActionEvent event) {
+		data.addPersona(new Persona(txtNombre.getText(), txtApellido.getText(), txtTelefono.getText()));
+		vistaPrincipal(event);
 	}
 
 	public String getTxtNombre() {

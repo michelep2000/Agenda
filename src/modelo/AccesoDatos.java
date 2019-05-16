@@ -6,7 +6,7 @@ import javafx.collections.ObservableList;
 
 public class AccesoDatos extends Main{
 	
-	static protected ObservableList<Persona> personData;
+	protected ObservableList<Persona> personData;
 	
 	public AccesoDatos() {
 		personData = FXCollections.observableArrayList();
@@ -16,6 +16,11 @@ public class AccesoDatos extends Main{
 	public void newPerson(Persona person) {
 		personData.add(person);
 	}
+	
+	public void addPersona(Persona nueva) {
+		personData.add(nueva);
+	}
+	
 	public ObservableList<Persona> getPersonData() {
 		return personData;
 	}

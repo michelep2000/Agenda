@@ -10,17 +10,17 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import modelo.Persona;
 
 public class ControladorPrincipal extends Main {
-	
+
 	@FXML
 	private TableView<Persona> tblViewPersonas;
-	
-	@FXML 
+
+	@FXML
 	private TableColumn<Persona, String> nombres;
-	
-	@FXML 
+
+	@FXML
 	private TableColumn<Persona, String> apellidos;
-	
-	@FXML 
+
+	@FXML
 	private TableColumn<Persona, String> telefonos;
 
 	@FXML
@@ -31,28 +31,30 @@ public class ControladorPrincipal extends Main {
 
 	@FXML
 	private Button btnBorrar;
-	
-	
-	public void setPerson() {
 
-		//enlazar listas con tableview
-		tblViewPersonas.setItems(data.getPersonData());
+	@FXML
+	public void initialize() {
 		
-		//enlazar columnas con fxId
+		// enlazar columnas con fxId
 		nombres.setCellValueFactory(new PropertyValueFactory<Persona, String>("nombre"));
 		apellidos.setCellValueFactory(new PropertyValueFactory<Persona, String>("apellido"));
 		telefonos.setCellValueFactory(new PropertyValueFactory<Persona, String>("telefono"));
-
+		setPerson();
 	}
 	
+	public void setPerson() {
+
+		try {
+			// enlazar listas con tableview
+			tblViewPersonas.setItems(data.getPersonData());
+		} catch (Exception e) {
+		}
+
+	}
+
 	public void newPerson() {
 		cambiarVista(btnNuevo, "../vista/VistaEdicion.fxml");
-	
+
 	}
-
-
-	
-
-	
 
 }

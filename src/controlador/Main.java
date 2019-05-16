@@ -21,26 +21,24 @@ public class Main extends Application {
 	private Stage vistaEdicion;
 	private AnchorPane rootLayout;
 	static protected AccesoDatos data;
-	static protected Persona persona;
-	static protected ControladorEdicion cEdicion;
+	protected Persona persona;
 	static protected ControladorPrincipal cPrincipal;
-	static protected int indice;
 
 	@Override
 	public void start(Stage primaryStage) {
 		data = new AccesoDatos();
-		cEdicion = new ControladorEdicion();
 		cPrincipal = new ControladorPrincipal();
 		try {
 			this.primaryStage = primaryStage;
 			this.primaryStage.setTitle("MVC Agenda JavaFX");
-// Load root layout from fxml file.
+			// Load root layout from fxml file.
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("../vista/VistaPrincipal.fxml"));
 			rootLayout = (AnchorPane) loader.load();
 			// Show the scene containing the root layout.
 			Scene scene = new Scene(rootLayout);
 			primaryStage.setScene(scene);
+			scene.getStylesheets().add(getClass().getResource("../application/application.css").toExternalForm());
 			primaryStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -56,14 +54,13 @@ public class Main extends Application {
 			// Show the scene containing the root layout.
 			Scene scene = new Scene(rootLayout);
 			vistaEdicion = new Stage();
-            
+			
 			vistaEdicion.setTitle("Persona");
 			vistaEdicion.setScene(scene);
+			scene.getStylesheets().add(getClass().getResource("../application/application.css").toExternalForm());
 			vistaEdicion.show();
 		} catch (Exception e) {
-
 			System.out.println(e.getMessage());
-
 		}
 
 	}

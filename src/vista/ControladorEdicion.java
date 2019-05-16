@@ -24,13 +24,22 @@ public class ControladorEdicion extends Main {
 	@FXML
 	private Button btnOk;
 
+	@FXML
+	public void initialize() {
+		if (editPosition != -1) {
+			txtNombre.setText(data.getPersonData().get(editPosition).getNombre());
+			txtApellido.setText(data.getPersonData().get(editPosition).getApellido());
+			txtTelefono.setText(data.getPersonData().get(editPosition).getTelefono());
+		}
+	}
+
 	public void guardar(ActionEvent event) {
 		if (!(txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtTelefono.getText().equals(""))) {
 			if (editPerson) {
 				data.getPersonData().set(editPosition,
 						new Persona(txtNombre.getText(), txtApellido.getText(), txtTelefono.getText()));
 				editPerson = false;
-				editPosition -= 1;
+				editPosition = -1;
 			} else
 				data.addPersona(new Persona(txtNombre.getText(), txtApellido.getText(), txtTelefono.getText()));
 			vistaPrincipal(event);
@@ -41,9 +50,8 @@ public class ControladorEdicion extends Main {
 			alert.show();
 		}
 
-		
 	}
-	
+
 	public void cancel(ActionEvent event) {
 		vistaPrincipal(event);
 	}

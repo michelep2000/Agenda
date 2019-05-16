@@ -73,6 +73,7 @@ public class ControladorPrincipal extends Main {
 
 	public void editPerson() {
 		if (!tblViewPersonas.getSelectionModel().isEmpty()) {
+			
 			editPosition = tblViewPersonas.getSelectionModel().getSelectedIndex();
 			editPerson = true;
 			cambiarVista(btnEditar, "../vista/VistaEdicion.fxml");

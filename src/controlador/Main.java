@@ -23,6 +23,8 @@ public class Main extends Application {
 	static protected AccesoDatos data;
 	protected Persona persona;
 	static protected ControladorPrincipal cPrincipal;
+	static protected boolean editPerson;
+	static protected int editPosition;
 
 	@Override
 	public void start(Stage primaryStage) {

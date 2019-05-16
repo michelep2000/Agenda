@@ -13,12 +13,12 @@ public class AccesoDatos extends Main{
 		personData.add(new Persona("Adrian","cactus","123456789"));
 	}
 	
-	public void newPerson(Persona person) {
-		personData.add(person);
-	}
-	
 	public void addPersona(Persona nueva) {
 		personData.add(nueva);
+	}
+	
+	public void deletePerson(int position) {
+		personData.remove(position);
 	}
 	
 	public ObservableList<Persona> getPersonData() {

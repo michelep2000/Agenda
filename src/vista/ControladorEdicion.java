@@ -4,8 +4,10 @@ import controlador.Main;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import modelo.Persona;
 
 public class ControladorEdicion extends Main {
@@ -23,7 +25,26 @@ public class ControladorEdicion extends Main {
 	private Button btnOk;
 
 	public void guardar(ActionEvent event) {
-		data.addPersona(new Persona(txtNombre.getText(), txtApellido.getText(), txtTelefono.getText()));
+		if (!(txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtTelefono.getText().equals(""))) {
+			if (editPerson) {
+				data.getPersonData().set(editPosition,
+						new Persona(txtNombre.getText(), txtApellido.getText(), txtTelefono.getText()));
+				editPerson = false;
+				editPosition -= 1;
+			} else
+				data.addPersona(new Persona(txtNombre.getText(), txtApellido.getText(), txtTelefono.getText()));
+			vistaPrincipal(event);
+		} else {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("No content in text fields");
+			alert.setContentText("You have to fill the text field");
+			alert.show();
+		}
+
+		
+	}
+	
+	public void cancel(ActionEvent event) {
 		vistaPrincipal(event);
 	}
 

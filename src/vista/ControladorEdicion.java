@@ -26,7 +26,7 @@ public class ControladorEdicion extends Main {
 
 	@FXML
 	public void initialize() {
-		if (editPosition != -1) {
+		if (editPosition != -1 && editPerson == true) {
 			txtNombre.setText(data.getPersonData().get(editPosition).getNombre());
 			txtApellido.setText(data.getPersonData().get(editPosition).getApellido());
 			txtTelefono.setText(data.getPersonData().get(editPosition).getTelefono());
@@ -53,6 +53,7 @@ public class ControladorEdicion extends Main {
 	}
 
 	public void cancel(ActionEvent event) {
+		editPerson = false;
 		vistaPrincipal(event);
 	}
 
